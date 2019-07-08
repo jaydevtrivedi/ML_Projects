@@ -408,19 +408,16 @@ class Model:
 
         model = models.Sequential()
         model.add(
-            layers.Conv2D(filters=batch_size, kernel_size=(9, 9), activation="relu"))
-        model.add(layers.MaxPooling2D(pool_size=(3, 3)))
-        model.add(
-            layers.Conv2D(filters=batch_size, kernel_size=(9, 9), activation="relu"))
-        model.add(layers.MaxPooling2D(pool_size=(3, 3)))
-        model.add(
-            layers.Conv2D(filters=batch_size, kernel_size=(3, 3), activation="relu"))
+            layers.Conv2D(filters=32, kernel_size=3, strides=1, activation="relu", input_shape=(pixels,pixels)))
         model.add(layers.MaxPooling2D(pool_size=(2, 2)))
         model.add(
-            layers.Conv2D(filters=batch_size, kernel_size=(3, 3), activation="relu"))
+            layers.Conv2D(filters=64, kernel_size=3, strides=1, activation="relu"))
+        model.add(layers.MaxPooling2D(pool_size=(2, 2)))
+        model.add(
+            layers.Conv2D(filters=128, kernel_size=3, strides=1, activation="relu"))
         model.add(layers.MaxPooling2D(pool_size=(2, 2)))
         model.add(layers.Flatten())
-        model.add(layers.Dense(units=10, activation="relu"))
+        model.add(layers.Dense(units=128, activation="relu"))
         model.add(layers.Dense(units=num_classes, activation="softmax"))
 
         # Training the model
