@@ -30,8 +30,7 @@ train_generator, valid_generator = data.get_train_valid_datagen(IMAGE_SIZE, BATC
 steps_per_epoch = train_generator.samples // train_generator.batch_size
 validation_steps = valid_generator.samples // valid_generator.batch_size
 
-#model_nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15]
-model_nums = [0, 1, 2]
+model_nums = [0]
 hist_list = []
 pred_list = []
 for model_num in model_nums:

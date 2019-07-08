@@ -15,13 +15,14 @@ class Constants:
     tfrec_dir = tfdata_dir + "/tfrec_dir"
     tfcache_dir = tfdata_dir + "/tfcache_dir"
 
-    # ISIC skin cancer
-    # win_path_all_imgs = "C:\\Users\\Jaydev\\Documents\\GitHub\\repos\\deep_learning\\ISIC_skin_cancer\\datasets\\all_imgs"
-    # win_path_pred_imgs = "C:\\Users\\Jaydev\\Documents\\GitHub\\repos\\deep_learning\\ISIC_skin_cancer\\datasets\\predict_files"
+    # # ISIC skin cancer
+    # win_path_all_imgs = "C:\\Users\\Jaydev\\Documents\\Datasets\\ml_projects_datasets\\skin_cancer\\all_images"
+    # win_path_pred_imgs = "C:\\Users\\Jaydev\\Documents\\Datasets\\ml_projects_datasets\\skin_cancer\\pred_images"
 
-    # Malaria test
-    win_path_all_imgs = "C:\\Users\\Jaydev\\Documents\\GitHub\\repos\\deep_learning\\ISIC_skin_cancer\\datasets\\all_imgs_malaria"
-    win_path_pred_imgs = "C:\\Users\\Jaydev\\Documents\\GitHub\\repos\\deep_learning\\ISIC_skin_cancer\\datasets\\predict_files_malaria"
+    # Malaria cells
+    win_path_all_imgs = "C:\\Users\\Jaydev\\Documents\\Datasets\\ml_projects_datasets\\malaria_cells\\all_images"
+    win_path_pred_imgs = "C:\\Users\\Jaydev\\Documents\\Datasets\\ml_projects_datasets\\malaria_cells\\pred_images"
+
 
     # ------------------------------------------------------------------------------
 
