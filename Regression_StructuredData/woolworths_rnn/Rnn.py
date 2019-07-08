@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 
-dataset_csv = "C:\\Users\\Jaydev\\Documents\\Datasets\\tf_in_practice_datasets\\woolies_stock_predict\\stock_prices.csv"
+dataset_csv = "C:\\Users\\Jaydev\\Documents\\Datasets\\ml_projects_datasets\\woolies_stock_predict\\stock_prices.csv"
 
 #  Importing the Dataset
 dataset_train = pd.read_csv(dataset_csv)

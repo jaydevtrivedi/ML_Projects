@@ -13,7 +13,7 @@ from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 # For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory
 
 import os
-dataset_csv = "C:\\Users\\Jaydev\\Documents\\Datasets\\tf_in_practice_datasets\\aus_rain_pred\\weather.csv"
+dataset_csv = "C:\\Users\\Jaydev\\Documents\\Datasets\\ml_projects_datasets\\aus_rain_pred\\weather.csv"
 # Any results you write to the current directory are saved as output.
 
 # Importing the Dataset

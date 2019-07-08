@@ -6,7 +6,7 @@ from tensorflow import feature_column
 from tensorflow.keras import layers
 
 # Step 1 : Let's import the data
-dataset_csv = "C:\\Users\\Jaydev\\Documents\\Datasets\\tf_in_practice_datasets\\boston_housing\\housing.csv"
+dataset_csv = "C:\\Users\\Jaydev\\Documents\\Datasets\\ml_projects_datasets\\boston_housing\\housing.csv"
 
 import pandas as pd
 
