@@ -10,7 +10,7 @@ dataset.head()
 dataset.describe()
 dataset.corr()
 
-# Step 3 : Shuffle, Scale and Spilt the data
+# Step 3 : Select, Scale, Shuffle and Split
 dependent_columns = ['RM', 'LSTAT', 'PTRATIO']
 target_columns = ['MEDV']
 dependent_variables = dataset[dependent_columns]
@@ -34,7 +34,7 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import GridSearchCV
 
 
-# Fitting SVR to the dataset
+# Fitting decision tree to the dataset
 def decision_tree_regressor():
     model = DecisionTreeRegressor(random_state=0)
     parameters = {'criterion': ['mse', 'mae', 'friedman_mse'], 'splitter': ['best', 'random'],
@@ -51,12 +51,13 @@ def decision_tree_regressor():
 regressor = decision_tree_regressor()
 regressor.fit(X_train, y_train)
 
-# Step 6 :  R2 Score
-from sklearn.metrics import r2_score
-
-print("R2 score is {}".format(r2_score(y_test, regressor.predict(X_test))))
-
 # Step 6 : Predict some data
 print(standard_scalar_target.inverse_transform(regressor.predict(X_predict)))
 print("Actual : ")
 print(standard_scalar_target.inverse_transform(y_predict))
+
+# Step 7 :  R2 Score
+from sklearn.metrics import r2_score
+print("R2 score is {}".format(r2_score(y_test, regressor.predict(X_test))))
+
+

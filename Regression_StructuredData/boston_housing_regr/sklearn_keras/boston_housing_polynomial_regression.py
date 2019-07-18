@@ -56,6 +56,7 @@ from sklearn.metrics import r2_score
 print("R2 score is {}".format(r2_score(y_test, regressor.predict(poly_feat.fit_transform(X_test)))))
 
 # Step 6 : Predict some data
+print("Predicted : ")
 print(standard_scalar_target.inverse_transform(regressor.predict(poly_feat.fit_transform(X_predict))))
 print("Actual : ")
 print(standard_scalar_target.inverse_transform(y_predict))

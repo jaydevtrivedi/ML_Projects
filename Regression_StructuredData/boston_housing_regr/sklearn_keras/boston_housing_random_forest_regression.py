@@ -37,14 +37,14 @@ from sklearn.model_selection import GridSearchCV
 # Fitting SVR to the dataset
 def random_forest_regressor():
     model = RandomForestRegressor(random_state=0)
-    # parameters = {'n_estimators': [300, 500, 700], 'criterion': ['mse', 'mae', 'friedman_mse'],
+    parameters = {'n_estimators': [300, 500, 700], 'criterion': ['mse', 'mae', 'friedman_mse']}
     #               'max_depth': [1, 3, 5, 7, 9], 'min_samples_split': [4, 8, 16],
     #               'random_state': [0, 3], 'min_impurity_split': [0.1, 0.3],
     #               'bootstrap': [True, False], 'warm_start': [True, False]}
     #                 'min_impurity_decrease ': [0.3, 0.9],'max_leaf_nodes ': [3, 5, 7, 9, 11],
     #                 'max_features ': ['auto', 'sqrt', 'log2'], 'min_samples_leaf ': [],
     #                 'min_weight_fraction_leaf ': [3, 5, 7, 9],
-    parameters = {}
+    #parameters = {}
     grid_search = GridSearchCV(model, parameters, cv=5)
     return grid_search
 
@@ -59,6 +59,7 @@ from sklearn.metrics import r2_score
 print("R2 score is {}".format(r2_score(y_test, regressor.predict(X_test))))
 
 # Step 6 : Predict some data
+print("Predicted : ")
 print(standard_scalar_target.inverse_transform(regressor.predict(X_predict)))
 print("Actual : ")
 print(standard_scalar_target.inverse_transform(y_predict))
