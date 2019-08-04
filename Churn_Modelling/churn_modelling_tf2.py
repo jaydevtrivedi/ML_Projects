@@ -2,6 +2,7 @@
 test_size = 0.1
 batch_size = 32
 dataset_shuffle = True
+dataset_file = "C:\\Users\\Jaydev\\Documents\\Datasets\\ml_projects_datasets\\churn_modelling\\Churn_Modelling.csv"
 
 # Step 1 : Import the libraries
 import numpy as np
@@ -11,9 +12,11 @@ import tensorflow as tf
 from tensorflow import feature_column
 from tensorflow.keras import layers
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
 
 # Step 2 : Get the data
-dataframe = pd.read_csv('Churn_Modelling.csv')
+dataframe = pd.read_csv(dataset_file)
 # RowNumber and CustomerId is non required data for learning
 dataframe = dataframe.drop(['RowNumber', 'CustomerId'], axis=1)
 print(dataframe.columns)
@@ -31,6 +34,7 @@ print(len(test), 'test examples')
 def df_to_dataset(dataset, shuffle=dataset_shuffle, batch_size=batch_size):
     dataset = dataset.copy()
     labels = dataset.pop('Exited')
+    dataset = sc.fit_transform(dataset)
     ds = tf.data.Dataset.from_tensor_slices((dict(dataset), labels))
     if shuffle:
         ds = ds.shuffle(buffer_size=len(dataset))
