@@ -12,8 +12,6 @@ import tensorflow as tf
 from tensorflow import feature_column
 from tensorflow.keras import layers
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-sc = StandardScaler()
 
 # Step 2 : Get the data
 dataframe = pd.read_csv(dataset_file)
@@ -34,7 +32,6 @@ print(len(test), 'test examples')
 def df_to_dataset(dataset, shuffle=dataset_shuffle, batch_size=batch_size):
     dataset = dataset.copy()
     labels = dataset.pop('Exited')
-    dataset = sc.fit_transform(dataset)
     ds = tf.data.Dataset.from_tensor_slices((dict(dataset), labels))
     if shuffle:
         ds = ds.shuffle(buffer_size=len(dataset))
@@ -112,7 +109,9 @@ test_ds = df_to_dataset(test, shuffle=False, batch_size=batch_size)
 model = tf.keras.Sequential([
     feature_layer,
     layers.Dense(128, activation='relu'),
+    layers.Dropout(0.2),
     layers.Dense(128, activation='relu'),
+    layers.Dropout(0.1),
     layers.Dense(1, activation='sigmoid')
 ])
 
@@ -122,7 +121,7 @@ model.compile(optimizer='adam',
 
 model.fit(train_ds,
           validation_data=val_ds,
-          epochs=10)
+          epochs=100)
 
 loss, accuracy = model.evaluate(test_ds)
 print("Accuracy", accuracy)
