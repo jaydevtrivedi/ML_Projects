@@ -11,8 +11,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 
 # Step 2 :  Get the data
-dataset_train_file = "C:\\Users\\Jaydev\\Documents\\Datasets\\ml_projects_datasets\\stock_price_google\\google_sp_train.csv"
-dataset_test_file = "C:\\Users\\Jaydev\\Documents\\Datasets\\ml_projects_datasets\\stock_price_google\\google_sp_test.csv"
+dataset_train_file = "ml_projects_datasets\\stock_price_google\\google_sp_train.csv"
+dataset_test_file = "ml_projects_datasets\\stock_price_google\\google_sp_test.csv"
 
 # Importing the training set
 dataset_train = pd.read_csv(dataset_train_file)
@@ -48,7 +48,6 @@ print(y_train.shape)
 
 
 # Step 3 : Building the model
-# r2 score = -0.982989399029186
 def single_layer_lstm():
     model = tf.keras.Sequential([
         tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(64)),
@@ -60,7 +59,6 @@ def single_layer_lstm():
     return model
 
 
-# r2 score = 0.03670828320851405
 def multi_layer_lstm():
     model = tf.keras.Sequential([
         tf.keras.layers.LSTM(units=50, return_sequences=True, input_shape=(X_train.shape[1], 1)),
@@ -78,7 +76,6 @@ def multi_layer_lstm():
     return model
 
 
-# r2 score = -5.718919182578783
 def conv1D():
     model = tf.keras.Sequential([
         tf.keras.layers.Conv1D(128, 5, activation='relu', input_shape=(X_train.shape[1], 1)),
@@ -91,7 +88,6 @@ def conv1D():
     return model
 
 
-# r2 score = 0.11232137474512116, NUM_OF_EPOCHS = 500, BATCH_SIZE = 32
 def multilayer_gru():
     model = tf.keras.Sequential([
         tf.keras.layers.Bidirectional(tf.keras.layers.GRU(32)),
