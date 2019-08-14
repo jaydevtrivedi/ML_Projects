@@ -1,5 +1,5 @@
 # Recurrent Neural Network
-NUM_OF_EPOCHS = 500
+NUM_OF_EPOCHS = 100
 BATCH_SIZE = 32
 
 # Step 1: All Imports
@@ -56,8 +56,9 @@ def single_layer_lstm():
         tf.keras.layers.Dense(1, activation='sigmoid')
     ])
 
-    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
     return model
+
 
 # r2 score = 0.03670828320851405
 def multi_layer_lstm():
@@ -73,8 +74,7 @@ def multi_layer_lstm():
         tf.keras.layers.Dense(1)
     ])
 
-    #model.compile(optimizer='adam', loss='mean_squared_error')
-    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
     return model
 
 
@@ -87,7 +87,7 @@ def conv1D():
         tf.keras.layers.Dense(1, activation='sigmoid')
     ])
 
-    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+    model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
     return model
 
 
@@ -98,11 +98,13 @@ def multilayer_gru():
         tf.keras.layers.Dense(6, activation='relu'),
         tf.keras.layers.Dense(1, activation='sigmoid')
     ])
-    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+    model.compile(optimizer='adam', loss='mean_squared_error', metrics=['accuracy'])
     return model
 
 
 list_func = [single_layer_lstm, multi_layer_lstm, conv1D, multilayer_gru]
+dict_results = dict()
 
 for f in list_func:
     model = f()
@@ -124,9 +126,13 @@ for f in list_func:
     X_test = np.reshape(X_test, (X_test.shape[0], X_test.shape[1], 1))
     predicted_stock_price = model.predict(X_test)
     predicted_stock_price = sc.inverse_transform(predicted_stock_price)
+    dict_results[f.__name__] = r2_score(real_stock_price, predicted_stock_price)
 
-    print(f.__name__)
-    print(r2_score(real_stock_price, predicted_stock_price))
+print(dict_results)
+
+# Best result till now
+# bs = 1, epochs = 100
+# {'single_layer_lstm': -0.44437182141843135, 'multi_layer_lstm': 0.13769778661582666, 'conv1D': -6.6136835861118595, 'multilayer_gru': -0.22029392469808506}
 
 # Step 5 :  Visualising the results
 # plt.plot(real_stock_price, color='red', label='Real Google Stock Price')
