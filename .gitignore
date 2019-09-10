@@ -3,3 +3,5 @@ kuzushiji_recognition
 Classification_Image/.idea
 cats_v_dogs/tfcache_dir
 cats_v_dogs/tfrec_dir
+aptos_2019_blindness_detection/.idea
+aptos_2019_blindness_detection/tfrec_dir

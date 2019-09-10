@@ -11,8 +11,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score
 
 # Step 2 :  Get the data
-dataset_train_file = "ml_projects_datasets\\stock_price_google\\google_sp_train.csv"
-dataset_test_file = "ml_projects_datasets\\stock_price_google\\google_sp_test.csv"
+dataset_train_file = "C:\\Users\\Jaydev\\Documents\\Datasets\\ml_projects_datasets\\stock_price_google\\google_sp_train.csv"
+dataset_test_file = "C:\\Users\\Jaydev\\Documents\\Datasets\\ml_projects_datasets\\stock_price_google\\google_sp_test.csv"
 
 # Importing the training set
 dataset_train = pd.read_csv(dataset_train_file)
@@ -130,7 +130,7 @@ print(dict_results)
 # bs = 1, epochs = 100
 # {'single_layer_lstm': -0.44437182141843135, 'multi_layer_lstm': 0.13769778661582666, 'conv1D': -6.6136835861118595, 'multilayer_gru': -0.22029392469808506}
 
-# Visualising the results
+# Step 5 :  Visualising the results
 # plt.plot(real_stock_price, color='red', label='Real Google Stock Price')
 # plt.plot(predicted_stock_price, color='blue', label='Predicted Google Stock Price')
 # plt.title('Google Stock Price Prediction')
