@@ -474,7 +474,7 @@ def predict(list_func):
                       )
         history_predict = model.predict(image_ds_test, steps=BATCH_SIZE)
         results = np.argmax(history_predict, axis=1)
-        output = str(r2_score(y_test, results)) + "," + str(len(history.history['sparse_categorical_accuracy']))
+        output = str(r2_score(y_test, results))
         dict_results[f.__name__] = output
 
     print(dict_results)
